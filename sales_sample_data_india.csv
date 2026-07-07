@@ -1,0 +1,51 @@
+Date,Customer,Product,Category,Region,Quantity,Price,Revenue,Profit
+02/01/2025,CUST-1005,Laptop Pro,Electronics,North Zone,1,75000.00,75000.00,11250.00
+03/01/2025,CUST-1022,Fine Gel Pen Set (12-pack),Office Supplies,East Zone,4,120.00,480.00,288.00
+05/01/2025,CUST-1011,Ergonomic Mesh Chair,Furniture,West Zone,1,12500.00,12500.00,3125.00
+08/01/2025,CUST-1019,Classic Cotton Hoodie,Apparel,South Zone,2,1800.00,3600.00,1620.00
+12/01/2025,CUST-1002,Smartphone X,Electronics,West Zone,1,45000.00,45000.00,8100.00
+15/01/2025,CUST-1035,Premium Leather Notebook,Office Supplies,North Zone,5,350.00,1750.00,875.00
+19/01/2025,CUST-1009,Standing Wooden Desk,Furniture,East Zone,1,22000.00,22000.00,4400.00
+22/01/2025,CUST-1026,Dry-Fit Training Shoes,Apparel,North Zone,2,4500.00,9000.00,2700.00
+25/01/2025,CUST-1040,Noise Cancelling Headphones,Electronics,South Zone,1,15000.00,15000.00,3750.00
+29/01/2025,CUST-1004,Ergonomic Desk Organizer,Office Supplies,West Zone,3,800.00,2400.00,1080.00
+01/02/2025,CUST-1015,Classic Cotton Hoodie,Apparel,East Zone,1,1800.00,1800.00,810.00
+04/02/2025,CUST-1031,Smart Watch Elite,Electronics,North Zone,2,12000.00,24000.00,5280.00
+07/02/2025,CUST-1008,Heavy Duty Paper Shredder,Office Supplies,South Zone,1,6500.00,6500.00,2275.00
+11/02/2025,CUST-1021,Ergonomic Mesh Chair,Furniture,West Zone,2,12500.00,25000.00,6250.00
+14/02/2025,CUST-1017,Dual Monitor Arm Mount,Furniture,East Zone,1,4500.00,4500.00,1350.00
+18/02/2025,CUST-1003,Smartphone X,Electronics,North Zone,1,45000.00,45000.00,8100.00
+21/02/2025,CUST-1029,Casual Denim Jacket,Apparel,South Zone,1,2500.00,2500.00,875.00
+25/02/2025,CUST-1038,Bamboo Socks Pack (5 pairs),Apparel,West Zone,4,450.00,1800.00,990.00
+28/02/2025,CUST-1012,Premium Leather Notebook,Office Supplies,North Zone,10,350.00,3500.00,1750.00
+03/03/2025,CUST-1006,Laptop Pro,Electronics,East Zone,1,75000.00,75000.00,11250.00
+07/03/2025,CUST-1028,Dimmable LED Desk Lamp,Furniture,South Zone,3,1200.00,3600.00,1440.00
+11/03/2025,CUST-1033,Dry-Fit Training Shoes,Apparel,West Zone,2,4500.00,9000.00,2700.00
+14/03/2025,CUST-1001,Smartphone X,Electronics,East Zone,1,45000.00,45000.00,8100.00
+18/03/2025,CUST-1014,Fine Gel Pen Set (12-pack),Office Supplies,North Zone,6,120.00,720.00,432.00
+22/03/2025,CUST-1025,Ergonomic Mesh Chair,Furniture,South Zone,1,12500.00,12500.00,3125.00
+25/03/2025,CUST-1039,Noise Cancelling Headphones,Electronics,West Zone,2,15000.00,30000.00,7500.00
+29/03/2025,CUST-1007,Classic Cotton Hoodie,Apparel,North Zone,3,1800.00,5400.00,2430.00
+02/04/2025,CUST-1018,Smart Watch Elite,Electronics,East Zone,1,12000.00,12000.00,2640.00
+06/04/2025,CUST-1030,Ergonomic Desk Organizer,Office Supplies,South Zone,2,800.00,1600.00,720.00
+10/04/2025,CUST-1023,Dimmable LED Desk Lamp,Furniture,West Zone,1,1200.00,1200.00,480.00
+14/04/2025,CUST-1009,Standing Wooden Desk,Furniture,North Zone,1,22000.00,22000.00,4400.00
+18/04/2025,CUST-1037,Premium Leather Notebook,Office Supplies,East Zone,3,350.00,1050.00,525.00
+22/04/2025,CUST-1012,Laptop Pro,Electronics,South Zone,1,75000.00,75000.00,11250.00
+26/04/2025,CUST-1027,Casual Denim Jacket,Apparel,West Zone,2,2500.00,5000.00,1750.00
+30/04/2025,CUST-1034,Smart Watch Elite,Electronics,North Zone,1,12000.00,12000.00,2640.00
+03/05/2025,CUST-1016,Heavy Duty Paper Shredder,Office Supplies,East Zone,1,6500.00,6500.00,2275.00
+07/05/2025,CUST-1024,Ergonomic Mesh Chair,Furniture,South Zone,1,12500.00,12500.00,3125.00
+11/05/2025,CUST-1036,Bamboo Socks Pack (5 pairs),Apparel,West Zone,5,450.00,2250.00,1237.50
+15/05/2025,CUST-1005,Smartphone X,Electronics,North Zone,2,45000.00,90000.00,16200.00
+19/05/2025,CUST-1011,Dual Monitor Arm Mount,Furniture,East Zone,2,4500.00,9000.00,2700.00
+23/05/2025,CUST-1020,Dry-Fit Training Shoes,Apparel,South Zone,1,4500.00,4500.00,1350.00
+27/05/2025,CUST-1032,Fine Gel Pen Set (12-pack),Office Supplies,West Zone,8,120.00,960.00,576.00
+31/05/2025,CUST-1039,Standing Wooden Desk,Furniture,North Zone,1,22000.00,22000.00,4400.00
+04/06/2025,CUST-1008,Noise Cancelling Headphones,Electronics,East Zone,1,15000.00,15000.00,3750.00
+08/06/2025,CUST-1013,Classic Cotton Hoodie,Apparel,South Zone,2,1800.00,3600.00,1620.00
+12/06/2025,CUST-1025,Ergonomic Desk Organizer,Office Supplies,West Zone,4,800.00,3200.00,1440.00
+16/06/2025,CUST-1038,Smart Watch Elite,Electronics,North Zone,1,12000.00,12000.00,2640.00
+20/06/2025,CUST-1002,Laptop Pro,Electronics,East Zone,2,75000.00,150000.00,22500.00
+24/06/2025,CUST-1017,Dimmable LED Desk Lamp,Furniture,South Zone,2,1200.00,2400.00,960.00
+28/06/2025,CUST-1026,Dry-Fit Training Shoes,Apparel,West Zone,3,4500.00,13500.00,4050.00

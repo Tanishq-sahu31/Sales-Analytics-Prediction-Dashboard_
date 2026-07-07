@@ -1,0 +1,51 @@
+Date,Customer,Product,Category,Region,Quantity,Price,Revenue,Profit
+2025-01-02,CUST-1005,Laptop Pro,Electronics,North,1,1200.00,1200.00,180.00
+2025-01-03,CUST-1022,Fine Gel Pen Set (12-pack),Office Supplies,East,4,15.00,60.00,36.00
+2025-01-05,CUST-1011,Ergonomic Mesh Chair,Furniture,West,1,350.00,350.00,87.50
+2025-01-08,CUST-1019,Classic Cotton Hoodie,Apparel,South,2,55.00,110.00,49.50
+2025-01-12,CUST-1002,Smartphone X,Electronics,West,1,800.00,800.00,144.00
+2025-01-15,CUST-1035,Premium Leather Notebook,Office Supplies,North,5,20.00,100.00,50.00
+2025-01-19,CUST-1009,Standing Wooden Desk,Furniture,East,1,499.00,499.00,99.80
+2025-01-22,CUST-1026,Dry-Fit Training Shoes,Apparel,North,2,95.00,190.00,57.00
+2025-01-25,CUST-1040,Noise Cancelling Headphones,Electronics,South,1,250.00,250.00,62.50
+2025-01-29,CUST-1004,Ergonomic Desk Organizer,Office Supplies,West,3,45.00,135.00,60.75
+2025-02-01,CUST-1015,Classic Cotton Hoodie,Apparel,East,1,55.00,55.00,24.75
+2025-02-04,CUST-1031,Smart Watch Elite,Electronics,North,2,199.00,398.00,87.56
+2025-02-07,CUST-1008,Heavy Duty Paper Shredder,Office Supplies,South,1,120.00,120.00,42.00
+2025-02-11,CUST-1021,Ergonomic Mesh Chair,Furniture,West,2,350.00,700.00,175.00
+2025-02-14,CUST-1017,Dual Monitor Arm Mount,Furniture,East,1,90.00,90.00,27.00
+2025-02-18,CUST-1003,Smartphone X,Electronics,North,1,800.00,800.00,144.00
+2025-02-21,CUST-1029,Casual Denim Jacket,Apparel,South,1,80.00,80.00,28.00
+2025-02-25,CUST-1038,Bamboo Socks Pack (5 pairs),Apparel,West,4,18.00,72.00,39.60
+2025-02-28,CUST-1012,Premium Leather Notebook,Office Supplies,North,10,20.00,200.00,100.00
+2025-03-03,CUST-1006,Laptop Pro,Electronics,East,1,1200.00,1200.00,180.00
+2025-03-07,CUST-1028,Dimmable LED Desk Lamp,Furniture,South,3,35.00,105.00,42.00
+2025-03-11,CUST-1033,Dry-Fit Training Shoes,Apparel,West,2,95.00,190.00,57.00
+2025-03-14,CUST-1001,Smartphone X,Electronics,East,1,800.00,800.00,144.00
+2025-03-18,CUST-1014,Fine Gel Pen Set (12-pack),Office Supplies,North,6,15.00,90.00,54.00
+2025-03-22,CUST-1025,Ergonomic Mesh Chair,Furniture,South,1,350.00,350.00,87.50
+2025-03-25,CUST-1039,Noise Cancelling Headphones,Electronics,West,2,250.00,500.00,125.00
+2025-03-29,CUST-1007,Classic Cotton Hoodie,Apparel,North,3,55.00,165.00,74.25
+2025-04-02,CUST-1018,Smart Watch Elite,Electronics,East,1,199.00,199.00,43.78
+2025-04-06,CUST-1030,Ergonomic Desk Organizer,Office Supplies,South,2,45.00,90.00,40.50
+2025-04-10,CUST-1023,Dimmable LED Desk Lamp,Furniture,West,1,35.00,35.00,14.00
+2025-04-14,CUST-1009,Standing Wooden Desk,Furniture,North,1,499.00,499.00,99.80
+2025-04-18,CUST-1037,Premium Leather Notebook,Office Supplies,East,3,20.00,60.00,30.00
+2025-04-22,CUST-1012,Laptop Pro,Electronics,South,1,1200.00,1200.00,180.00
+2025-04-26,CUST-1027,Casual Denim Jacket,Apparel,West,2,80.00,160.00,56.00
+2025-04-30,CUST-1034,Smart Watch Elite,Electronics,North,1,199.00,199.00,43.78
+2025-05-03,CUST-1016,Heavy Duty Paper Shredder,Office Supplies,East,1,120.00,120.00,42.00
+2025-05-07,CUST-1024,Ergonomic Mesh Chair,Furniture,South,1,350.00,350.00,87.50
+2025-05-11,CUST-1036,Bamboo Socks Pack (5 pairs),Apparel,West,5,18.00,90.00,49.50
+2025-05-15,CUST-1005,Smartphone X,Electronics,North,2,800.00,1600.00,288.00
+2025-05-19,CUST-1011,Dual Monitor Arm Mount,Furniture,East,2,90.00,180.00,54.00
+2025-05-23,CUST-1020,Dry-Fit Training Shoes,Apparel,South,1,95.00,95.00,28.50
+2025-05-27,CUST-1032,Fine Gel Pen Set (12-pack),Office Supplies,West,8,15.00,120.00,72.00
+2025-05-31,CUST-1039,Standing Wooden Desk,Furniture,North,1,499.00,499.00,99.80
+2025-06-04,CUST-1008,Noise Cancelling Headphones,Electronics,East,1,250.00,250.00,62.50
+2025-06-08,CUST-1013,Classic Cotton Hoodie,Apparel,South,2,55.00,110.00,49.50
+2025-06-12,CUST-1025,Ergonomic Desk Organizer,Office Supplies,West,4,45.00,180.00,81.00
+2025-06-16,CUST-1038,Smart Watch Elite,Electronics,North,1,199.00,199.00,43.78
+2025-06-20,CUST-1002,Laptop Pro,Electronics,East,2,1200.00,2400.00,360.00
+2025-06-24,CUST-1017,Dimmable LED Desk Lamp,Furniture,South,2,35.00,70.00,28.00
+2025-06-28,CUST-1026,Dry-Fit Training Shoes,Apparel,West,3,95.00,285.00,85.50
