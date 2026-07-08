@@ -92,8 +92,8 @@ $$\text{Variance } (\sigma^2) = \frac{\sum_{i=1}^{N} (x_i - \text{Mean})^2}{N}$$
 Measures the standard distance of transactions from the average. Expressed in rupees.
 $$\text{Standard Deviation } (\sigma) = \sqrt{\text{Variance}}$$
 
-### 6. Ordinary Least Squares (OLS) Linear Regression Trend
-Calculates the best-fit line ($y = mx + c$) to predict the next month's sales ($y$) where the month indices are $x = [0, 1, 2...N-1]$.
+### 6. Linear Trend Line (Line of Best Fit)
+Calculates the best-fit line ($y = mx + c$) using standard coordinate geometry to predict the next month's sales ($y$) where the month indices are $x = [0, 1, 2...N-1]$.
 - **Slope ($m$)**:
   $$m = \frac{N\sum(xy) - \sum x\sum y}{N\sum(x^2) - \left(\sum x\right)^2}$$
 - **Intercept ($c$)**:
@@ -118,14 +118,16 @@ Here are the questions a tech recruiter or frontend architect will likely ask ab
     *   **A**: We used the built-in JavaScript Internationalization API method `number.toLocaleString('en-IN')`. By default, standard formatters group values by 3 digits (e.g. `150,000`). Using the `'en-IN'` locale parameter tells the browser's formatting engine to group values according to the Indian system (grouping by 3 digits for thousands, and then by 2 digits for lakhs and crores: e.g. `1,50,000`).
 
 ### 2. Data Structures & Algorithms (DSA) Questions
+*   **Q: How does the Sales Trend Line forecast work? Is it an AI/ML model?**
+    *   **A**: **No, it is 100% mathematical and uses basic coordinate geometry, not AI/ML.** To predict next month's sales, we find the line of best fit ($y = mx + c$) from coordinate geometry. $x$ represents the month indexes ($0, 1, 2, ...$) and $y$ represents monthly revenue. We calculate the average slope ($m$, which tells us by how much sales grow or shrink each month) and the y-intercept ($c$) using standard algebraic formulas. Then we plug in the next month's index to forecast the sales. This runs in $O(N)$ linear time.
 *   **Q: How do you extract unique filter items (like Categories and Regions) efficiently?**
     *   **A**: We loop through all records and add them as keys to a hash map object: `uniqueSet[row.category] = true`. Key-lookups and insertions in hash maps take $O(1)$ constant time. After scanning the database in $O(N)$ linear time, we extract the unique list with `Object.keys()`. This is significantly faster than checking if a value exists in a flat array, which would result in an inefficient $O(N^2)$ algorithm.
 *   **Q: What is the time complexity of your statistical calculations?**
     *   **A**: 
-        - Mean, Mode, Variance, and Regression calculations take **$O(N)$ (Linear Time)** since they traverse the records array exactly once.
+        - Mean, Mode, Variance, and Trend calculations take **$O(N)$ (Linear Time)** since they traverse the records array exactly once.
         - Median takes **$O(N \log N)$ (Linearithmic Time)** because it requires sorting the array of numbers.
 *   **Q: Why did you clone the array before sorting it to calculate the Median?**
-    *   **A**: In JavaScript, `Array.prototype.sort()` sorts elements *in-place*, which mutates the original array. If we sorted our main sales records list directly, it would destroy the chronological order of our transactions, breaking our charts and linear regression forecasts. We call `values.slice()` first to duplicate the array elements in memory before sorting.
+    *   **A**: In JavaScript, `Array.prototype.sort()` sorts elements *in-place*, which mutates the original array. If we sorted our main sales records list directly, it would destroy the chronological order of our transactions, breaking our charts and trend forecasts. We call `values.slice()` first to duplicate the array elements in memory before sorting.
 
 ### 3. Web Performance & Rendering Questions
 *   **Q: Why did you build a paginated data table instead of rendering all 500 rows?**

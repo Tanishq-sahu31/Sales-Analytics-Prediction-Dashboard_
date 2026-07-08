@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Analytics & Prediction Dashboard</title>
+  <meta name="description" content="A clean, professional sales analytics and forecasting dashboard built with vanilla JavaScript.">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Google Fonts - Inter for clean typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN for interactive graphs -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- PapaParse CDN for parsing CSV files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-area">
+        <h1>Sales Analytics & Prediction Dashboard</h1>
+      </div>
+      <div class="header-actions">
+        <!-- Load Sample Data: Helpful if user doesn't have a CSV file -->
+        <button id="btn-load-sample" class="btn btn-secondary">Load Sample Data</button>
+        <!-- Export Summary Report -->
+        <button id="btn-export-report" class="btn btn-primary" disabled>Export Report</button>
+        <!-- Dark Mode Toggle Button -->
+        <button id="btn-theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">
+          <!-- Light Mode Icon (Sun) -->
+          <svg id="icon-sun" class="icon hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <!-- Dark Mode Icon (Moon) -->
+          <svg id="icon-moon" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <!-- Logout Link -->
+        <a href="/auth/logout" class="btn btn-danger">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-layout">
+    
+    <!-- Sidebar for Inputs & Filters -->
+    <aside class="sidebar">
+      
+      <!-- Card 1: Data Source (Upload) -->
+      <section class="sidebar-card">
+        <h2 class="section-title">Data Source</h2>
+        
+        <!-- Drag & Drop Area -->
+        <div id="drop-zone" class="upload-box">
+          <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+          <p class="upload-text">Drag & drop your sales CSV here or</p>
+          <label for="csv-file-input" class="btn-upload-label">Browse File</label>
+          <input type="file" id="csv-file-input" accept=".csv" class="hidden-file-input">
+        </div>
+        
+        </div>
+      </section>
+
+      <!-- Card 2: Interactive Filters (Only enabled when data is loaded) -->
+      <section class="sidebar-card disabled-section" id="filter-section">
+        <div class="section-header-row">
+          <h2 class="section-title">Filters</h2>
+          <button id="btn-reset-filters" class="btn-text">Reset</button>
+        </div>
+
+        <!-- Date Range Filter -->
+        <div class="filter-group">
+          <label class="filter-label">Date Range</label>
+          <div class="date-inputs">
+            <div class="date-field">
+              <span>From</span>
+              <input type="date" id="filter-start-date">
+            </div>
+            <div class="date-field">
+              <span>To</span>
+              <input type="date" id="filter-end-date">
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Dropdown Filter -->
+        <div class="filter-group">
+          <label for="filter-category" class="filter-label">Product Category</label>
+          <select id="filter-category" class="form-select">
+            <option value="ALL">All Categories</option>
+          </select>
+        </div>
+
+        <!-- Region Dropdown Filter -->
+        <div class="filter-group">
+          <label for="filter-region" class="filter-label">Region</label>
+          <select id="filter-region" class="form-select">
+            <option value="ALL">All Regions</option>
+          </select>
+        </div>
+
+        <!-- Search Product / Customer -->
+        <div class="filter-group">
+          <label for="filter-search" class="filter-label">Search</label>
+          <input type="text" id="filter-search" placeholder="Product or Customer name..." class="form-input">
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- Main Dashboard Area -->
+    <article class="dashboard-content">
+      
+      <!-- Welcome/Placeholder Screen when no data is loaded -->
+      <div id="dashboard-placeholder" class="dashboard-placeholder-view">
+        <div class="placeholder-card">
+          <svg class="placeholder-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="9" x2="9" y1="21" y2="9"/></svg>
+          <h2>Welcome to Sales Analytics & Prediction Dashboard</h2>
+          <p>To view metrics, charts, and predictions, upload a business sales spreadsheet (CSV) or load our pre-configured sample data set.</p>
+          <div class="placeholder-actions">
+            <button id="btn-placeholder-sample" class="btn btn-primary">Load 500-Row Sample CSV</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Grid (Initially hidden until data loads) -->
+      <div id="dashboard-active" class="dashboard-active-view hidden">
+        
+        <!-- KPI Cards Grid (4 columns) -->
+        <section class="kpi-grid">
+          
+          <!-- Card 1: Revenue -->
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <span class="kpi-title">Total Revenue</span>
+              <h3 id="kpi-total-revenue" class="kpi-value">₹0.00</h3>
+            </div>
+          </div>
+
+          <!-- Card 2: Orders -->
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <span class="kpi-title">Total Orders</span>
+              <h3 id="kpi-total-orders" class="kpi-value">0</h3>
+            </div>
+          </div>
+
+          <!-- Card 3: Profit -->
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <span class="kpi-title">Total Profit</span>
+              <h3 id="kpi-total-profit" class="kpi-value">₹0.00</h3>
+            </div>
+          </div>
+
+          <!-- Card 4: Average Order Value -->
+          <div class="kpi-card">
+            <div class="kpi-info">
+              <span class="kpi-title">Avg Order Value (AOV)</span>
+              <h3 id="kpi-avg-order-value" class="kpi-value">₹0.00</h3>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Charts Grid Area -->
+        <section class="charts-grid">
+          
+          <!-- Line / Area Chart: Revenue Trend -->
+          <div class="chart-card span-2-cols">
+            <h3 class="chart-title">Revenue & Profit Trends Over Time</h3>
+            <div class="chart-container">
+              <canvas id="chart-sales-trend"></canvas>
+            </div>
+          </div>
+
+          <!-- Pie / Doughnut Chart: Category breakdown -->
+          <div class="chart-card">
+            <h3 class="chart-title">Sales by Category</h3>
+            <div class="chart-container">
+              <canvas id="chart-category"></canvas>
+            </div>
+          </div>
+
+          <!-- Bar Chart: Top Products -->
+          <div class="chart-card span-2-cols">
+            <h3 class="chart-title">Top Products by Revenue</h3>
+            <div class="chart-container">
+              <canvas id="chart-products"></canvas>
+            </div>
+          </div>
+
+          <!-- Horizontal Bar Chart: Regions -->
+          <div class="chart-card">
+            <h3 class="chart-title">Sales by Region</h3>
+            <div class="chart-container">
+              <canvas id="chart-region"></canvas>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Forecast & Prediction Section (Full Width Panel) -->
+        <section class="stats-predictions-grid">
+          
+          <!-- Forecasting & Prediction Card -->
+          <div class="dashboard-panel">
+            <div class="panel-header">
+              <h3 class="panel-title">Sales Forecasts & Growth Trends</h3>
+              <span class="panel-subtitle">Projections using coordinate geometry (No heavy libraries)</span>
+            </div>
+            <div class="panel-content">
+              
+              <div class="forecast-metrics">
+                <div class="forecast-item">
+                  <span class="forecast-label">Next Month Forecast (Simple Linear Trend)</span>
+                  <div class="forecast-val-wrapper">
+                    <span id="forecast-linear" class="forecast-value">₹0.00</span>
+                    <span id="forecast-linear-direction" class="trend-badge badge-neutral">--</span>
+                  </div>
+                  <small class="forecast-desc">Calculated using a line of best fit (slope and intercept).</small>
+                </div>
+                <div class="forecast-item">
+                  <span class="forecast-label">Next Month Forecast (3-Month Moving Average)</span>
+                  <div class="forecast-val-wrapper">
+                    <span id="forecast-ma" class="forecast-value">₹0.00</span>
+                  </div>
+                  <small class="forecast-desc">Calculated as the average of the last three calendar months.</small>
+                </div>
+              </div>
+
+              <!-- Actionable Business Insights -->
+              <div class="insights-box">
+                <h4 class="insights-title">Business Insights & Recommendations</h4>
+                <ul id="insights-list" class="insights-list">
+                  <li>Upload a dataset or load sample data to generate automated analytical insights.</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Data Explorer / Table Grid -->
+        <section class="dashboard-panel table-panel">
+          <div class="panel-header flex-header">
+            <div>
+              <h3 class="panel-title">Data Explorer</h3>
+              <span class="panel-subtitle">Displaying sanitized rows from uploaded file</span>
+            </div>
+          </div>
+          <div class="table-scroll-wrapper">
+            <table id="sales-data-table" class="data-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Customer ID</th>
+                  <th>Product Name</th>
+                  <th>Category</th>
+                  <th>Region</th>
+                  <th class="text-right">Qty</th>
+                  <th class="text-right">Price (₹)</th>
+                  <th class="text-right">Revenue (₹)</th>
+                  <th class="text-right">Profit (₹)</th>
+                </tr>
+              </thead>
+              <tbody id="table-body">
+                <!-- Programmatically populated -->
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Simple Pagination Footer -->
+          <div class="pagination-footer">
+            <button id="btn-prev-page" class="btn btn-secondary btn-sm" disabled>Previous</button>
+            <span id="pagination-info" class="pagination-text">Page 1 of 1</span>
+            <button id="btn-next-page" class="btn btn-secondary btn-sm" disabled>Next</button>
+          </div>
+        </section>
+
+      </div>
+    </article>
+  </main>
+
+  <!-- JavaScript files loaded in order -->
+  <!-- 1. The sample sales data CSV builder -->
+  <script src="/js/sampleData.js"></script>
+  <!-- 2. LocalStorage helper utility -->
+  <script src="/js/storage.js"></script>
+  <!-- 3. CSV File parsing and sanitizing module -->
+  <script src="/js/parser.js"></script>
+  <!-- 4. Mathematical algorithms and aggregators -->
+  <script src="/js/analyzer.js"></script>
+  <!-- 5. Business forecasting algorithms -->
+  <script src="/js/predictor.js"></script>
+  <!-- 6. Charts wrapper for Chart.js integrations -->
+  <script src="/js/charts.js"></script>
+  <!-- 7. UI rendering, tables, pagination, and event controllers -->
+  <script src="/js/ui.js"></script>
+  <!-- 8. Main Entrypoint tying it all together -->
+  <script src="/js/app.js"></script>
+
+</body>
+</html>
