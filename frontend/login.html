@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Sales Analytics & Prediction Dashboard</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     *{
       margin:0;
@@ -21,13 +19,13 @@
       align-items:center;
       min-height:100vh;
       background:#121212;
-      color:#fff;
+      color:#ffffff;
     }
 
     .auth-card{
-      width:420px;
+      width:430px;
       background:#1e1e1e;
-      border:1px solid #2e2e2e;
+      border:1px solid #2f2f2f;
       border-radius:12px;
       padding:40px;
       box-shadow:0 15px 40px rgba(0,0,0,.45);
@@ -37,7 +35,7 @@
       text-align:center;
       font-size:32px;
       font-weight:700;
-      color:#fff;
+      color:#ffffff;
       margin-bottom:10px;
     }
 
@@ -63,9 +61,9 @@
     }
 
     .alert-success{
-      background:#0d3b20;
-      border:1px solid #28a745;
-      color:#a7f3d0;
+      background:#0d3b1e;
+      border:1px solid #198754;
+      color:#b3ffc2;
     }
 
     .form-group{
@@ -76,7 +74,7 @@
       display:block;
       margin-bottom:8px;
       font-weight:500;
-      color:#fff;
+      color:#ffffff;
     }
 
     .form-input{
@@ -85,7 +83,7 @@
       border-radius:8px;
       border:1px solid #3a3a3a;
       background:#2a2a2a;
-      color:#fff;
+      color:#ffffff;
       font-size:15px;
       transition:.2s;
     }
@@ -106,11 +104,12 @@
       border:none;
       border-radius:8px;
       background:#3b82f6;
-      color:#fff;
+      color:#ffffff;
       font-size:16px;
       font-weight:600;
       cursor:pointer;
       transition:.2s;
+      margin-top:8px;
     }
 
     .btn-submit:hover{
@@ -134,85 +133,50 @@
       text-decoration:underline;
     }
   </style>
-
 </head>
 <body>
 
-<div class="auth-card">
+  <div class="auth-card">
+    <h2 class="auth-title">Welcome Back</h2>
+    <p class="auth-subtitle">Login to access your sales predictions</p>
 
-  <h2 class="auth-title">Welcome Back</h2>
+    <!-- Error/Success notification banner -->
+    <div id="alert-box" class="alert"></div>
 
-  <p class="auth-subtitle">
-    Login to access your Sales Analytics Dashboard
-  </p>
+    <form action="/auth/login" method="POST">
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" name="email" class="form-input" placeholder="you@example.com" required>
+      </div>
 
-  <div id="alert-box" class="alert"></div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-input" placeholder="••••••••" required>
+      </div>
 
-  <form action="/auth/login" method="POST">
+      <button class="btn-submit">Log In</button>
+    </form>
 
-    <div class="form-group">
-      <label class="form-label">Email Address</label>
-
-      <input
-        type="email"
-        name="email"
-        class="form-input"
-        placeholder="Enter your email"
-        required>
+    <div class="auth-footer">
+      Don't have an account? <a href="/signup">Sign up</a>
     </div>
-
-    <div class="form-group">
-
-      <label class="form-label">Password</label>
-
-      <input
-        type="password"
-        name="password"
-        class="form-input"
-        placeholder="Enter your password"
-        required>
-
-    </div>
-
-    <button class="btn-submit">
-      Log In
-    </button>
-
-  </form>
-
-  <div class="auth-footer">
-    Don't have an account?
-    <a href="/signup">Sign Up</a>
   </div>
 
-</div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+    const success = urlParams.get('success');
+    const alertBox = document.getElementById('alert-box');
 
-<script>
-
-const urlParams = new URLSearchParams(window.location.search);
-
-const error = urlParams.get("error");
-const success = urlParams.get("success");
-
-const alertBox = document.getElementById("alert-box");
-
-if(error){
-
-    alertBox.innerText = error;
-    alertBox.className = "alert alert-error";
-    alertBox.style.display = "block";
-
-}
-
-if(success){
-
-    alertBox.innerText = success;
-    alertBox.className = "alert alert-success";
-    alertBox.style.display = "block";
-
-}
-
-</script>
-
+    if (error) {
+      alertBox.innerText = error;
+      alertBox.className = "alert alert-error";
+      alertBox.style.display = "block";
+    } else if (success) {
+      alertBox.innerText = success;
+      alertBox.className = "alert alert-success";
+      alertBox.style.display = "block";
+    }
+  </script>
 </body>
 </html>
