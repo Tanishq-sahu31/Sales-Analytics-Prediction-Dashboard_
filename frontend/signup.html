@@ -4,18 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up - Sales Analytics & Prediction Dashboard</title>
-  <!-- Link to our standard dashboard styles to reuse CSS variable colors -->
-  <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Styling to center our authentication card on the page */
+    /* Force sleek dark theme values by default */
+    :root {
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-main: #f8f9fa;
+      --text-muted: #a0a0a0;
+      --border-color: #2d2d2d;
+      --primary-color: #3b82f6;
+      --primary-hover: #60a5fa;
+      --transition-speed: 0.15s;
+    }
+
     body {
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       background-color: var(--bg-color);
-      color: var(--text-color);
+      color: var(--text-main);
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 20px;
@@ -30,6 +39,7 @@
       width: 100%;
       max-width: 400px;
       box-sizing: border-box;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
     
     .auth-title {
@@ -37,6 +47,7 @@
       font-weight: 600;
       margin-bottom: 8px;
       text-align: center;
+      color: var(--text-main);
     }
     
     .auth-subtitle {
@@ -55,39 +66,44 @@
       font-size: 14px;
       font-weight: 500;
       margin-bottom: 8px;
+      color: var(--text-main);
     }
     
     .form-input {
       width: 100%;
-      padding: 10px 12px;
+      padding: 12px;
       border: 1px solid var(--border-color);
       border-radius: 6px;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      background-color: #2a2a2a; /* Slightly lighter gray for typing contrast */
+      color: #ffffff;
       box-sizing: border-box;
       font-size: 14px;
+      font-family: inherit;
+      transition: border-color var(--transition-speed) ease;
     }
     
     .form-input:focus {
       outline: none;
-      border-color: var(--primary-blue);
+      border-color: var(--primary-color);
     }
     
+    /* Sleek blue submit button */
     .btn-submit {
       width: 100%;
       padding: 12px;
-      background-color: var(--primary-blue);
-      color: white;
+      background-color: var(--primary-color);
+      color: #ffffff;
       border: none;
       border-radius: 6px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
       font-size: 14px;
       margin-top: 10px;
+      transition: background-color var(--transition-speed) ease;
     }
     
     .btn-submit:hover {
-      background-color: #0256d6;
+      background-color: var(--primary-hover);
     }
     
     .auth-footer {
@@ -98,7 +114,7 @@
     }
     
     .auth-footer a {
-      color: var(--primary-blue);
+      color: var(--primary-color);
       text-decoration: none;
       font-weight: 500;
     }
@@ -117,9 +133,9 @@
     }
     
     .alert-error {
-      background-color: rgba(220, 53, 69, 0.1);
+      background-color: rgba(220, 53, 69, 0.15);
       border: 1px solid #dc3545;
-      color: #dc3545;
+      color: #ea868f;
     }
   </style>
 </head>
@@ -132,7 +148,6 @@
     <!-- Error alert banner -->
     <div id="alert-box" class="alert alert-error"></div>
 
-    <!-- Standard HTML Form submitting POST request directly to Express -->
     <form action="/auth/signup" method="POST">
       <div class="form-group">
         <label for="username" class="form-label">Full Name / Username</label>
@@ -158,10 +173,7 @@
   </div>
 
   <script>
-    // WHAT THIS SCRIPT DOES:
-    // 1. Reads error query parameters from URL redirects and displays them.
-    // 2. Restores saved theme preferences (light/dark) from LocalStorage.
-    
+    // Extract query parameters from URL redirects
     const urlParams = new URLSearchParams(window.location.search);
     const error = urlParams.get('error');
     const alertBox = document.getElementById('alert-box');
@@ -169,12 +181,6 @@
     if (error) {
       alertBox.innerText = error;
       alertBox.style.display = "block";
-    }
-
-    // Restore dark/light theme setting instantly
-    const savedTheme = localStorage.getItem("sales_dashboard_theme");
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark-mode");
     }
   </script>
 </body>

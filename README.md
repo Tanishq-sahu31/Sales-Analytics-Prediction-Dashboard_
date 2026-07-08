@@ -1,3 +1,7 @@
+## 🚀 Live Demo
+
+https://sales-analytics-prediction-dashboard.onrender.com
+
 # Sales Analytics & Prediction Dashboard
 
 A modern, clean, and professional business intelligence dashboard built entirely on the frontend using **Vanilla JavaScript (ES6)**, **HTML5**, and **CSS3**. This application processes thousands of transaction records, computes descriptive mathematical statistics, visualizes sales distributions, and calculates linear regression forecasts.
