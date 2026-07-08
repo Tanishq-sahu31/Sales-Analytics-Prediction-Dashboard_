@@ -4,184 +4,229 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up - Sales Analytics & Prediction Dashboard</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Force sleek dark theme values by default */
-    :root {
-      --bg-color: #121212;
-      --card-bg: #1e1e1e;
-      --text-main: #f8f9fa;
-      --text-muted: #a0a0a0;
-      --border-color: #2d2d2d;
-      --primary-color: #3b82f6;
-      --primary-hover: #60a5fa;
-      --transition-speed: 0.15s;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Inter',sans-serif;
     }
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 20px;
+    body{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      background:#121212;
+      color:#ffffff;
     }
-    
-    /* Sleek card container */
-    .auth-card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 40px;
-      width: 100%;
-      max-width: 400px;
-      box-sizing: border-box;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+    .auth-card{
+      width:430px;
+      background:#1e1e1e;
+      border:1px solid #2f2f2f;
+      border-radius:12px;
+      padding:40px;
+      box-shadow:0 15px 40px rgba(0,0,0,.45);
     }
-    
-    .auth-title {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      text-align: center;
-      color: var(--text-main);
+
+    .auth-title{
+      text-align:center;
+      font-size:32px;
+      font-weight:700;
+      color:#ffffff;
+      margin-bottom:10px;
     }
-    
-    .auth-subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      text-align: center;
+
+    .auth-subtitle{
+      text-align:center;
+      color:#a1a1aa;
+      margin-bottom:35px;
+      font-size:15px;
     }
-    
-    .form-group {
-      margin-bottom: 20px;
+
+    .alert{
+      display:none;
+      padding:12px;
+      border-radius:8px;
+      margin-bottom:20px;
+      font-size:14px;
     }
-    
-    .form-label {
-      display: block;
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 8px;
-      color: var(--text-main);
+
+    .alert-error{
+      background:#3b0d11;
+      border:1px solid #dc3545;
+      color:#ffb3ba;
     }
-    
-    .form-input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      background-color: #2a2a2a; /* Slightly lighter gray for typing contrast */
-      color: #ffffff;
-      box-sizing: border-box;
-      font-size: 14px;
-      font-family: inherit;
-      transition: border-color var(--transition-speed) ease;
+
+    .form-group{
+      margin-bottom:22px;
     }
-    
-    .form-input:focus {
-      outline: none;
-      border-color: var(--primary-color);
+
+    .form-label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:500;
+      color:#ffffff;
     }
-    
-    /* Sleek blue submit button */
-    .btn-submit {
-      width: 100%;
-      padding: 12px;
-      background-color: var(--primary-color);
-      color: #ffffff;
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 14px;
-      margin-top: 10px;
-      transition: background-color var(--transition-speed) ease;
+
+    .form-input{
+      width:100%;
+      padding:13px 15px;
+      border-radius:8px;
+      border:1px solid #3a3a3a;
+      background:#2a2a2a;
+      color:#ffffff;
+      font-size:15px;
+      transition:.2s;
     }
-    
-    .btn-submit:hover {
-      background-color: var(--primary-hover);
+
+    .form-input::placeholder{
+      color:#8b8b8b;
     }
-    
-    .auth-footer {
-      text-align: center;
-      margin-top: 24px;
-      font-size: 14px;
-      color: var(--text-muted);
+
+    .form-input:focus{
+      outline:none;
+      border-color:#3b82f6;
+      box-shadow:0 0 0 3px rgba(59,130,246,.2);
     }
-    
-    .auth-footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-weight: 500;
+
+    .btn-submit{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:8px;
+      background:#3b82f6;
+      color:#ffffff;
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s;
+      margin-top:8px;
     }
-    
-    .auth-footer a:hover {
-      text-decoration: underline;
+
+    .btn-submit:hover{
+      background:#2563eb;
     }
-    
-    /* Error notification layout */
-    .alert {
-      padding: 10px 12px;
-      border-radius: 6px;
-      font-size: 13px;
-      margin-bottom: 20px;
-      display: none;
+
+    .auth-footer{
+      text-align:center;
+      margin-top:30px;
+      color:#a1a1aa;
+      font-size:15px;
     }
-    
-    .alert-error {
-      background-color: rgba(220, 53, 69, 0.15);
-      border: 1px solid #dc3545;
-      color: #ea868f;
+
+    .auth-footer a{
+      color:#60a5fa;
+      text-decoration:none;
+      font-weight:600;
     }
+
+    .auth-footer a:hover{
+      text-decoration:underline;
+    }
+
   </style>
+
 </head>
+
 <body>
 
-  <div class="auth-card">
-    <h2 class="auth-title">Create Account</h2>
-    <p class="auth-subtitle">Register to analyze and forecast your sales</p>
+<div class="auth-card">
 
-    <!-- Error alert banner -->
+    <h2 class="auth-title">Create Account</h2>
+
+    <p class="auth-subtitle">
+        Register to start analyzing and forecasting your sales
+    </p>
+
     <div id="alert-box" class="alert alert-error"></div>
 
     <form action="/auth/signup" method="POST">
-      <div class="form-group">
-        <label for="username" class="form-label">Full Name / Username</label>
-        <input type="text" id="username" name="username" class="form-input" placeholder="John Doe" required>
-      </div>
 
-      <div class="form-group">
-        <label for="email" class="form-label">Email Address</label>
-        <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
-      </div>
+        <div class="form-group">
 
-      <div class="form-group">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
-      </div>
+            <label class="form-label">
+                Full Name
+            </label>
 
-      <button type="submit" class="btn-submit">Sign Up</button>
+            <input
+                type="text"
+                name="username"
+                class="form-input"
+                placeholder="Enter your full name"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                name="email"
+                class="form-input"
+                placeholder="Enter your email"
+                required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="form-label">
+                Password
+            </label>
+
+            <input
+                type="password"
+                name="password"
+                class="form-input"
+                placeholder="Create a password"
+                required>
+
+        </div>
+
+        <button class="btn-submit">
+            Create Account
+        </button>
+
     </form>
 
     <div class="auth-footer">
-      Already have an account? <a href="/login">Log in</a>
+
+        Already have an account?
+
+        <a href="/login">
+            Log In
+        </a>
+
     </div>
-  </div>
 
-  <script>
-    // Extract query parameters from URL redirects
-    const urlParams = new URLSearchParams(window.location.search);
-    const error = urlParams.get('error');
-    const alertBox = document.getElementById('alert-box');
+</div>
 
-    if (error) {
-      alertBox.innerText = error;
-      alertBox.style.display = "block";
-    }
-  </script>
+<script>
+
+const urlParams = new URLSearchParams(window.location.search);
+
+const error = urlParams.get("error");
+
+const alertBox = document.getElementById("alert-box");
+
+if(error){
+
+    alertBox.innerText = error;
+    alertBox.style.display = "block";
+
+}
+
+</script>
+
 </body>
 </html>
